@@ -1,4 +1,4 @@
-__author__ = 'galynam'
+__author__ = 'galyna'
 
 class Group:
 
