@@ -20,3 +20,9 @@ class ContactHelper:
         wd.find_element_by_name("lastname").send_keys(contact.lastname)
         # submit contact creation
         wd.find_element_by_xpath("//div[@id='content']/form/input[21]").click()
+
+    def modify_first(self):
+        print("modify first")
+
+    def delete_first(self):
+        print("delete first")
