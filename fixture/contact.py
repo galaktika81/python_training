@@ -1,5 +1,6 @@
 __author__ = 'galyna'
 
+from model.contact import Contact
 
 class ContactHelper:
     def __init__(self, app):
@@ -48,3 +49,15 @@ class ContactHelper:
             wd.find_element_by_name(field_firstname).click()
             wd.find_element_by_name(field_firstname).clear()
             wd.find_element_by_name(field_firstname).send_keys(text)
+
+    def get_contact_list(self):
+        wd = self.app.wd
+        self.open_contacts_page()
+        contacts = []
+        for element in wd.find_elements_by_css_selector("tr[name]"):
+            contact = element.find_elements_by_css_selector('td')
+            firstname = contact[2].text
+            lastname = contact[1].text
+            id = element.find_element_by_name("selected[]").get_attribute("value")
+            contacts.append(Contact(firstname=firstname, lastname=lastname, id=id))
+        return contacts
