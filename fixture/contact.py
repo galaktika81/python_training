@@ -14,9 +14,9 @@ class ContactHelper:
         wd.find_element_by_xpath("//div[@id='content']/form/input[21]").click()
         self.contact_cache = None
 
-    def modify_first(self, contact):
+    def modify_by_index(self, contact, index):
         wd = self.app.wd
-        wd.find_element_by_css_selector("img[alt=\"Edit\"]").click()
+        wd.find_elements_by_css_selector("img[alt=\"Edit\"]")[index].click()
         self.fill_contact_form(contact)
         wd.find_element_by_name("update").click()
         self.contact_cache = None
@@ -26,10 +26,10 @@ class ContactHelper:
         if not (wd.current_url.endswith("/addressbook/")):
             wd.find_element_by_link_text("home").click()
 
-    def delete_first(self):
+    def delete_by_index(self, index):
         wd = self.app.wd
         self.open_contacts_page()
-        wd.find_element_by_name("selected[]").click()
+        wd.find_elements_by_name("selected[]")[index].click()
         wd.find_element_by_xpath("//div[@id='content']/form[2]/div[2]/input").click()
         wd.switch_to_alert().accept()
         self.open_contacts_page()
