@@ -66,9 +66,14 @@ class ContactHelper:
                 contact = element.find_elements_by_css_selector('td')
                 firstname = contact[2].text
                 lastname = contact[1].text
+
                 id = element.find_element_by_name("selected[]").get_attribute("value")
+                address = contact[3].text
+
+                all_emails = contact[4].text
                 all_phones = contact[5].text
-                self.contact_cache.append(Contact(firstname=firstname, lastname=lastname, id=id, all_phones_from_home_page = all_phones))
+                self.contact_cache.append(Contact(firstname=firstname, lastname=lastname, id=id,
+                                        address=address, all_emails=all_emails, all_phones_from_home_page = all_phones))
         return list(self.contact_cache)
 
     def open_contact_to_edit_by_index(self, index):
@@ -94,8 +99,14 @@ class ContactHelper:
         workphone = wd.find_element_by_name("work").get_attribute("value")
         mobilephone = wd.find_element_by_name("mobile").get_attribute("value")
         secondaryphone = wd.find_element_by_name("phone2").get_attribute("value")
+        address = wd.find_element_by_name("address").get_attribute("value")
+        email = wd.find_element_by_name("email").get_attribute("value")
+        email2 = wd.find_element_by_name("email2").get_attribute("value")
+        email3 = wd.find_element_by_name("email3").get_attribute("value")
+
         return Contact(firstname=firstname, lastname=lastname, id=id,
-                       homephone=homephone, workphone=workphone, mobilephone=mobilephone, secondaryphone=secondaryphone)
+                       homephone=homephone, workphone=workphone, mobilephone=mobilephone, secondaryphone=secondaryphone,
+                       address=address, email=email, email2=email2, email3=email3)
 
     def get_contact_from_view_page(self, index):
         wd = self.app.wd
