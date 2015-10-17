@@ -3,11 +3,17 @@ __author__ = 'galyna'
 from sys import maxsize
 
 class Contact:
-    def __init__(self, firstname=None, middlename=None, lastname=None, id = None):
+    def __init__(self, firstname=None, middlename=None, lastname=None, id = None, homephone = None, workphone = None,
+                 mobilephone = None, secondaryphone = None, all_phones_from_home_page = None):
         self.firstname = firstname
         self.middlename = middlename
         self.lastname = lastname
         self.id = id
+        self.homephone = homephone
+        self.workphone = workphone
+        self.mobilephone = mobilephone
+        self.secondaryphone = secondaryphone
+        self.all_phones_from_home_page = all_phones_from_home_page
 
     def __repr__(self):
         return "%s:%s:%s:%s" % (self.id, self.firstname, self.middlename, self.lastname)
