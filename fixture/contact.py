@@ -16,7 +16,7 @@ class ContactHelper:
 
     def modify_by_index(self, contact, index):
         wd = self.app.wd
-        wd.find_elements_by_css_selector("img[alt=\"Edit\"]")[index].click()
+        wd.find_elements_by_css_selector('img[alt="Edit"]')[index].click()
         self.fill_contact_form(contact)
         wd.find_element_by_name("update").click()
         self.contact_cache = None
