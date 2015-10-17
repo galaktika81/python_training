@@ -1,7 +1,7 @@
 __author__ = 'galyna'
 
 from model.group import Group
-
+import re
 
 class GroupHelper:
     def __init__(self, app):
@@ -73,7 +73,7 @@ class GroupHelper:
             self.open_groups_page()
             self.group_cache = []
             for element in wd.find_elements_by_css_selector("span.group"):
-                text = element.text
                 id = element.find_element_by_name("selected[]").get_attribute("value")
-                self.group_cache.append(Group(name=text, id=id))
+                name = (re.search('Select (.*)', element.find_element_by_name("selected[]").get_attribute("title")).group(1)[1:-1])
+                self.group_cache.append(Group(name=name, id=id))
         return list(self.group_cache)
