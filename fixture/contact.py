@@ -70,6 +70,13 @@ class ContactHelper:
         self.change_field_value("middlename", contact.middlename)
         self.change_field_value("lastname", contact.lastname)
 
+        if contact.group is not None:
+            selectGroup = wd.find_element_by_name('new_group')
+            for option in selectGroup.find_elements_by_tag_name('option'):
+                if option.text == contact.group.name:
+                    option.click()
+                    break
+
     def change_field_value(self, fieldname, text):
         wd = self.app.wd
         if text is not None:

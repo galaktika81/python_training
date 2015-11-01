@@ -58,3 +58,6 @@ class ORMFixture:
     @db_session
     def get_contacts_not_in_group(self, group):
         return self.convert_contacts_to_model(select(c for c in ORMFixture.ORMContact if c.deprecated is None and self.get_orm_group_by_id(group.id) not in c.groups))
+
+    def destroy(self):
+        self.db.disconnect()

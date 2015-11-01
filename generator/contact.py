@@ -1,6 +1,5 @@
 from model.contact import Contact
-import random
-import string
+from generator.random import random_string
 import getopt
 import sys
 import os
@@ -21,10 +20,6 @@ for o, a in opts:
         n = int(a)
     elif o == "-f":
         f = a
-
-def random_string(prefix, maxlen):
-    symbols = string.ascii_letters + string.digits + string.punctuation + " "*10
-    return prefix + ''.join([random.choice(symbols) for i in range(random.randrange(maxlen))])
 
 testdata= [Contact(firstname="", middlename="", lastname="")] + [
    Contact(firstname=random_string("fname", 15), middlename=random_string("mname", 15), lastname=random_string("lname", 15))
