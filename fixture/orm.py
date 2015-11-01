@@ -53,7 +53,7 @@ class ORMFixture:
 
     @db_session
     def get_contacts_in_group(self, group):
-        return self.convert_contacts_to_model(self.get_orm_group_by_id(group.id).contacts)
+        return list(filter(lambda x: x in self.get_contact_list(), self.convert_contacts_to_model(self.get_orm_group_by_id(group.id).contacts)))
 
     @db_session
     def get_contacts_not_in_group(self, group):
