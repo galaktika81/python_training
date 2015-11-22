@@ -6,4 +6,4 @@ pymysql
 --allow-external mysql-connector-python
 mysql-connector-python
 lxml-3.5.0-cp35-none-win32.whl
-pytest-allure-adaptor
+C:\\tools\\pytest-allure-adaptor-1.6.8.tar.gz
