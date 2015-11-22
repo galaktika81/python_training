@@ -1,7 +1,7 @@
 pytest
 selenium
 jsonpickle
-pony
+C:\\tools\\pony-0.6.1.tar.gz
 pymysql
 --allow-external mysql-connector-python
 mysql-connector-python
